@@ -33,6 +33,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
