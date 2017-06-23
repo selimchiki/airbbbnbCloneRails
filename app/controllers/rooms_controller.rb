@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show,:update,:edit]
+  before_action :set_room, only: [:show,:update,:edit, :destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :require_same_user, only: [:edit, :update]
+  before_action :destroy_image, only: [:destroy]
 
   def index
     @rooms = current_user.rooms
@@ -49,6 +50,12 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @room.destroy
+    redirect_to root_path
+  end
+
+
   private
 
   def set_room
@@ -56,13 +63,19 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_wifi, :is_tv, :is_closet, :is_shampoo, :is_breakfast, :is_heating, :is_air, :is_kitchen, :price, :active)
+    params.require(:room).permit(:home_type, :room_type, :accomodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_wifi, :is_tv, :is_closet, :is_shampoo, :is_breakfast, :is_heating, :is_air, :is_kitchen, :price, :active)
   end
 
   def require_same_user
     if current_user.id != @room.user_id
       flash[:danger] = "Vous n'avez pas le droit de modifier cette page"
       redirect_to root_path
+    end
+  end
+
+  def destroy_image
+    if @room.photos.length > 0
+      @room.photos.destroy_all
     end
   end
 end
