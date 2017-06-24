@@ -41,6 +41,8 @@ gem 'rails-i18n'
 
 gem "font-awesome-sass"
 
+gem 'geocoder'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
