@@ -14,7 +14,9 @@
 //= require turbolinks
 //= require jquery
 //= require jquery-ui
-//=require toastr
+//= require rails-timeago
+//= require rails-timeago-all
+//= require toastr
 //= require_tree .
 
 toastr.options = {

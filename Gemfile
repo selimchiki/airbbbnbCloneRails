@@ -47,6 +47,8 @@ gem 'jquery-ui-rails'
 
 gem 'ransack'
 
+gem 'rails-timeago'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
